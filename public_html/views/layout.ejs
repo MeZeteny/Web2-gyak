@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title><%= title %> - F1 Beadandó</title>
+    <link rel="stylesheet" href="<%= BASE_PATH %>/assets/css/main.css" />
+</head>
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+
+        <!-- Header + Menü -->
+        <section id="header">
+            <div class="container">
+                <h1 id="logo"><a href="<%= BASE_PATH %>/">F1 Adatbázis</a></h1>
+                <p>Formula–1 pilóták, futamok és statisztikák</p>
+
+                <%- include('partials/menu') %>
+            </div>
+        </section>
+
+        <!-- Tartalom -->
+        <section id="main">
+            <div class="container">
+                <%- body %>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section id="footer">
+            <div class="container">
+                <p>&copy; <%= new Date().getFullYear() %> studb024</p>
+            </div>
+        </section>
+
+    </div>
+
+    
+    <script src="<%= BASE_PATH %>/assets/js/jquery.min.js"></script>
+    <script src="<%= BASE_PATH %>/assets/js/jquery.dropotron.min.js"></script>
+    <script src="<%= BASE_PATH %>/assets/js/browser.min.js"></script>
+    <script src="<%= BASE_PATH %>/assets/js/breakpoints.min.js"></script>
+    <script src="<%= BASE_PATH %>/assets/js/util.js"></script>
+    <script src="<%= BASE_PATH %>/assets/js/main.js"></script>
+</body>
+</html>
