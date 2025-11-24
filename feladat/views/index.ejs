@@ -1,0 +1,95 @@
+<% layout('layout') -%>
+
+<!-- Header (a sablon eredeti header része) -->
+<section id="header">
+    <div class="container">
+
+        <!-- Logo -->
+        <h1 id="logo"><a href="<%= BASE_PATH %>/">Pilóták Világa</a></h1>
+        <p>A leggyorsabb pilóták, a legnagyobb futamok – minden egy helyen</p>
+
+        <!-- Dinamikus menü (már megvan nálad a partials/menu.ejs) -->
+        <%- include('partials/menu') %>
+
+    </div>
+</section>
+
+<!-- Features – statisztikák az adatbázisból -->
+<section id="features">
+    <div class="container">
+        <header>
+            <h2>Üdvözöllek a <strong>Formula–1</strong> világában!</h2>
+        </header>
+        <div class="row aln-center">
+
+            <div class="col-4 col-6-medium col-12-small">
+                <section>
+                    <a href="<%= BASE_PATH %>/pilotak" class="image featured">
+                        <img src="<%= BASE_PATH %>/images/pilotak.jpg" alt="Pilóták" />
+                    </a>
+                    <header>
+                        <h3><%= stats.pilotak || '200+' %> pilóta</h3>
+                    </header>
+                    <p>Minden versenyző részletes adatai</p>
+                </section>
+            </div>
+
+            <div class="col-4 col-6-medium col-12-small">
+                <section>
+                    <a href="<%= BASE_PATH %>/futamok" class="image featured">
+                        <img src="<%= BASE_PATH %>/images/futamok.jpg" alt="Nagydíjak" />
+                    </a>
+                    <header>
+                        <h3><%= stats.futamok || '1000+' %> nagydíj</h3>
+                    </header>
+                    <p>Történelmi futamok és győztesek</p>
+                </section>
+            </div>
+
+            <div class="col-4 col-6-medium col-12-small">
+                <section>
+                    <a href="<%= BASE_PATH %>/statisztika" class="image featured">
+                        <img src="<%= BASE_PATH %>/images/stat.jpg" alt="Statisztika" />
+                    </a>
+                    <header>
+                        <h3><%= stats.gyoztesek || '800+' %> győzelem</h3>
+                    </header>
+                    <p>Legjobb pilóták és csapatok</p>
+                </section>
+            </div>
+
+            <div class="col-12">
+                <ul class="actions">
+                    <li><a href="<%= BASE_PATH %>/pilotak" class="button icon solid fa-arrow-right">Kezdd el böngészni!</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Banner -->
+<section id="banner">
+    <div class="container">
+        <p><strong><%= user ? 'Üdv újra, ' + user.username + '!' : 'Jelentkezz be a teljes élményért!' %></strong></p>
+    </div>
+</section>
+
+<!-- Main tartalom – rövid bemutatkozás -->
+<section id="main">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <article class="box post">
+                    <header>
+                        <h2>Üdvözöllek a <strong>Pilóták Világa</strong> adatbázisban!</h2>
+                    </header>
+                    <p>Ez egy modern, Node.js + Express + MySQL alapú webalkalmazás, amely a Formula–1 történetét dolgozza fel. Böngészhetsz pilóták, futamok, eredmények között, statisztikákat nézhetsz, és kapcsolatba léphetsz velünk.</p>
+                    <p>A projekt teljes mértékben megfelel a Webtechnológiák 2 ZH követelményeinek.</p>
+                    <ul class="actions">
+                        <li><a href="<%= BASE_PATH %>/kapcsolat" class="button icon solid fa-envelope">Írj nekünk</a></li>
+                    </ul>
+                </article>
+            </div>
+        </div>
+    </div>
+</section>
