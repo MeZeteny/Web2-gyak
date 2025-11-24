@@ -1,18 +1,5 @@
-<% layout('layout') -%>
-
+<%- include('partials/header') %>
 <!-- Header (a sablon eredeti header része) -->
-<section id="header">
-    <div class="container">
-
-        <!-- Logo -->
-        <h1 id="logo"><a href="<%= BASE_PATH %>/">Pilóták Világa</a></h1>
-        <p>A leggyorsabb pilóták, a legnagyobb futamok – minden egy helyen</p>
-
-        <!-- Dinamikus menü (már megvan nálad a partials/menu.ejs) -->
-        <%- include('partials/menu') %>
-
-    </div>
-</section>
 
 <!-- Features – statisztikák az adatbázisból -->
 <section id="features">
@@ -28,7 +15,7 @@
                         <img src="<%= BASE_PATH %>/images/pilotak.jpg" alt="Pilóták" />
                     </a>
                     <header>
-                        <h3><%= stats.pilotak || '200+' %> pilóta</h3>
+                        <h3></h3>
                     </header>
                     <p>Minden versenyző részletes adatai</p>
                 </section>
@@ -40,7 +27,7 @@
                         <img src="<%= BASE_PATH %>/images/futamok.jpg" alt="Nagydíjak" />
                     </a>
                     <header>
-                        <h3><%= stats.futamok || '1000+' %> nagydíj</h3>
+                        <h3></h3>
                     </header>
                     <p>Történelmi futamok és győztesek</p>
                 </section>
@@ -52,7 +39,7 @@
                         <img src="<%= BASE_PATH %>/images/stat.jpg" alt="Statisztika" />
                     </a>
                     <header>
-                        <h3><%= stats.gyoztesek || '800+' %> győzelem</h3>
+                        <h3></h3>
                     </header>
                     <p>Legjobb pilóták és csapatok</p>
                 </section>
@@ -70,7 +57,7 @@
 <!-- Banner -->
 <section id="banner">
     <div class="container">
-        <p><strong><%= user ? 'Üdv újra, ' + user.username + '!' : 'Jelentkezz be a teljes élményért!' %></strong></p>
+        
     </div>
 </section>
 
@@ -93,3 +80,5 @@
         </div>
     </div>
 </section>
+
+<%- include('partials/footer') %>

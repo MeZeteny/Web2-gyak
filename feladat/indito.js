@@ -9,7 +9,7 @@ const path = require('path');
 const app = express();
 
 const PORT = 4024;
-const BASE_PATH = '/app024';
+const BASE_PATH = '';
 
 const pool = mysql.createPool({
     host:     'localhost',
@@ -35,6 +35,7 @@ app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
+app.set('layout', 'layout');
 app.listen(PORT);
 
 app.use((req, res, next) => {
@@ -56,16 +57,20 @@ function requireLogin(req, res, next) {
 const router = express.Router();
 app.use(BASE_PATH, router);
 
-router.get('/', async (req, res) => {
+router.get('/', (req, res) => {
     res.render('index', { title: 'Pilóták Világa' });
 });
 
+router.get('/regisztracio', (req, res) => {
+    res.render('regisztracio', { title: 'Regisztráció' });
+});
+
+// Regisztráció 
 router.post('/regisztracio', async (req, res) => {
     const { username, password } = req.body;
     try {
         const hashed = await bcrypt.hash(password, 10);
-        await pool.execute('INSERT INTO felhasznalok (username, password, role) VALUES (?, ?, ?)', 
-            [username, hashed, 'user']);
+        await pool.execute('INSERT INTO felhasznalok (username, password, role) VALUES (?, ?, "user")', [username, hashed]);
         res.redirect(BASE_PATH + '/bejelentkezes');
     } catch (err) {
         res.render('regisztracio', { title: 'Regisztráció', error: 'A felhasználónév már foglalt!' });
@@ -102,6 +107,26 @@ router.post('/bejelentkezes', async (req, res) => {
 router.get('/kijelentkezes', (req, res) => {
     req.session.destroy();
     res.redirect(BASE_PATH + '/');
+});
+
+// Kapcsolat oldal megjelenítése
+router.get('/kapcsolat', (req, res) => {
+    res.render('kapcsolat', { title: 'Kapcsolat' });
+});
+
+// Üzenet fogadása
+router.post('/kapcsolat', async (req, res) => {
+    const { nev, email, uzenet } = req.body;
+    try {
+        await pool.execute(
+            'INSERT INTO uzenetek (nev, email, uzenet, datum) VALUES (?, ?, ?, NOW())',
+            [nev, email, uzenet]
+        );
+        res.render('kapcsolat', { title: 'Kapcsolat', success: true });
+    } catch (err) {
+        console.error(err);
+        res.render('kapcsolat', { title: 'Kapcsolat', error: 'Hiba történt!' });
+    }
 });
 
 

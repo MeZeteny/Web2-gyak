@@ -1,0 +1,26 @@
+<%- include('partials/header') %>
+
+<div class="container">
+    <section id="main">
+        <header class="major">
+            <h2>Kapcsolat</h2>
+        </header>
+
+        <% if (typeof success !== 'undefined') { %>
+            <p style="color:green"><strong>Köszönjük az üzenetet!</strong></p>
+        <% } %>
+
+        <form method="POST" action="<%= BASE_PATH %>/kapcsolat">
+            <div class="row gtr-50">
+                <div class="col-6"><input type="text" name="nev" placeholder="Neved" required /></div>
+                <div class="col-6"><input type="email" name="email" placeholder="Email" required /></div>
+                <div class="col-12"><textarea name="uzenet" placeholder="Üzeneted" rows="6" required></textarea></div>
+                <div class="col-12">
+                    <button type="submit" class="button icon solid fa-envelope">Küldés</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+<%- include('partials/footer') %>

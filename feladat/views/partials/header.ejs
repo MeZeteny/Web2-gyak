@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title><%= typeof title !== 'undefined' ? title : 'F1 Adatbázis' %> - Pilóták Világa</title>
+    <link rel="stylesheet" href="<%= BASE_PATH %>/css/main.css">
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+    <section id="header">
+        <div class="container">
+            <h1 id="logo"><a href="<%= BASE_PATH %>/">Pilóták Világa</a></h1>
+            <p>Formula–1 adatbázis pilótákkal, futamokkal és statisztikákkal</p>
+            <%- include('menu') %>
+        </div>
+    </section>

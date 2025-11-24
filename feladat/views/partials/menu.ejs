@@ -1,16 +1,36 @@
-<!-- Nav -->
 <nav id="nav">
-	<ul>
-	    <li><a class="icon solid fa-home" href="index.html"><span>Introduction</span></a></li>
-		<li><a class="icon solid fa-cog" href="left-sidebar.html"><span>Left Sidebar</span></a></li>
-		<li><a class="icon solid fa-retweet" href="right-sidebar.html"><span>Right Sidebar</span></a></li>
-		<li><a class="icon solid fa-sitemap" href="no-sidebar.html"><span>No Sidebar</span></a></li>
-		<% if (user) { %>
-			<li>Bejelentkezve: <strong><%= user.username %></strong></li>
-			<li><a href="<%= BASE_PATH %>/kijelentkezes">Kijelentkezés</a></li>
-		<% } else { %>
-			<li><a href="<%= BASE_PATH %>/bejelentkezes">Bejelentkezés</a></li>
-			<li><a href="<%= BASE_PATH %>/regisztracio">Regisztráció</a></li>
-		<% } %>
-	</ul>
+    <ul>
+        <li><a class="icon solid fa-home <%= currentPath === '/' ? 'active' : '' %>" href="<%= BASE_PATH %>/">
+            <span>Főoldal</span>
+        </a></li>
+        <li><a class="icon solid fa-users <%= currentPath === '/adatbazis' ? 'active' : '' %>" href="<%= BASE_PATH %>/adatbazis">
+            <span>Adatbázis</span>
+        </a></li>
+        <li><a class="icon solid fa-flag-checkered <%= currentPath === '/kapcsolat' ? 'active' : '' %>" href="<%= BASE_PATH %>/kapcsolat">
+            <span>Kapcsolat</span>
+        </a></li>
+        <li><a class="icon solid fa-chart-bar <%= currentPath === '/uzenetek' ? 'active' : '' %>" href="<%= BASE_PATH %>/uzenetek">
+            <span>Üzenetek</span>
+        </a></li>
+        <li><a class="icon solid fa-envelope <%= currentPath === '/crud' ? 'active' : '' %>" href="<%= BASE_PATH %>/crud">
+            <span>CRUD</span>
+        </a></li>
+
+        <!-- Bejelentkezés / Kijelentkezés -->
+        <% if (typeof user !== 'undefined' && user) { %>
+            <li class="right">
+                <strong><%= user.username %></strong>
+            </li>
+            <li class="right">
+                <a href="<%= BASE_PATH %>/kijelentkezes" class="button small">Kijelentkezés</a>
+            </li>
+        <% } else { %>
+            <li class="right">
+                <a href="<%= BASE_PATH %>/bejelentkezes" class="button small">Bejelentkezés</a>
+            </li>
+            <li class="right">
+                <a href="<%= BASE_PATH %>/regisztracio">Regisztráció</a>
+            </li>
+        <% } %>
+    </ul>
 </nav>
